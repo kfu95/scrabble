@@ -20,9 +20,11 @@ LetterBag:
     Methods: removeFromBag(String letterToRemove) -> return String + remove, addToBag(String letterToAdd)
 
 Letters:
+
     Properties: int value, char letter
 
 Dictionary:
+
     Properties: String Language, HashSet AllowedWords
     Methods: AddToAllowed(String wordToAdd), removeFromAllowed(wordToRemove)
 
