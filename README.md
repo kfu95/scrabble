@@ -1,14 +1,29 @@
 What will make up scrabble:
 
-Players:
+Can think of dividing it in ways of more games than just scrabble to make it more extensible since all games have diff rules
+and diff logic flow but want to make it as extensible as possible
 
-    Properties: int Score, HashSet LettersHeld
-    Methods: addToScore(int num),  removeFromHand(char[] word), addToHand(int lengthPut, LetterBag currLetters), skipTurn(), exchangeBag(char[] inHand, LetterBag currLetters)
+Player:
+    Properties: int Score, string name
+    Methods: getScore, getName
 
+ScrabblePlayer:
+    Property: String[] lettersHeld
+
+PlayerController:
+    Methods: addToScore(int num, Player currPlayer), addToHand(), skipTurn(), removeFromHand()
+ 
 Board:
+    array[][] boardTiles
+    int SizeOfBoard, addTile
 
     Properties: int SizeOfBoard, Array[][] boardTiles, Players[] players
-    Methods: changeTurn(Player turn), drawTurn(), firstTurn(), validMove(), calculateScore(Array boardTilesBefore, boardTileAfter), putOnBoard(Player playerTurn, char[] word, int xCoor, int yCoor), addTile(BoardOfTile, xCoor, yCoor)
+    Methods: CreateBoard(Array[][] boardTiles)
+//business logic, aka word checking
+Board Controller:
+
+    Methods: AddWord, AddScoreToPlayer, EndGame, validWordCheck, computeScore
+    
 
 BoardTiles: 
 
@@ -18,6 +33,8 @@ LetterBag:
 
     Properties: HashMap of Letters, int lettersLeft
     Methods: removeFromBag(Char[] letterToRemove) -> return char + remove, addToBag(String letterToAdd)
+
+LetterBagController
 
 Letters:
 
@@ -32,6 +49,7 @@ Game:
 
     Properties: Board, List of Players, LetterBag. 
     Methods: 
+    
 
 Notes: 
     - How to make more extensible? Different langauges, wordsAllowed, scoring tiles, num players
@@ -40,3 +58,7 @@ Notes:
     - But when information gets more complicated, you can split up the responsibility along that line, So you can have a Board class that holds information about the board and supports very elementary operations and a "BoardController" class that makes business logic level actions on the "Board"
     - Board interface  "addTile()
     - while the BoardController can implement "addWord()"
+
+Side Notes:
+    - What else can use a controller, what else can be more complex than it seems. Board controller can also check for valid Moves
+    - Player controller too. can also control things players do 
